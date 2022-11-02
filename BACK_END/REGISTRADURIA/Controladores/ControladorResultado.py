@@ -27,12 +27,12 @@ class ControladorResultado():
         }
         return resultado   #diccionario
 
-    def update(self, idMesa,idpartido,dictResultado):
-        print("Update de Resultado por idpartido" + idpartido)
+    def update(self, id, dictResultado):
+        print("Update de Resultado por idpartido")
         resultado = Resultado(dictResultado)
         return resultado.__dict__
 
-    def delete(self,idMesa,idPartido):
+    def delete(self, id):
         print("Borrar un resultado :")
         return {"deleted_count ": 1}
 
