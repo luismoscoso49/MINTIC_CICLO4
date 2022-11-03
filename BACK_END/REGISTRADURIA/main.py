@@ -26,7 +26,7 @@ def getcandidatos():  # devuelve todos los candidatos
     return jsonify(json)
     return "<h3>mensaje en pantalla</h3>"   #   si se qiuere devolver un mnensaje
 
-@app.route("/newCandidato", methods=['POST'])
+@app.route("/candidatos", methods=['POST'])
 def crearCandidato():
     data = request.get_json()   #data tiene la info del body. La informacion viene como formato JSON
     json = controladorCandidato.create(data)
@@ -38,14 +38,14 @@ def getCandidato(id):
     return jsonify(json)
 
 
-@app.route("/updCandidato/<string:id>", methods=['PUT'])
+@app.route("/candidatos/<string:id>", methods=['PUT'])
 def modificarCandidato(id):
     data = request.get_json()
     json = controladorCandidato.update(id, data)
     return jsonify(json)
 
 
-@app.route("/delCandidato/<string:id>", methods=['DELETE'])
+@app.route("/candidatos/<string:id>", methods=['DELETE'])
 def eliminarCandidato(id):
     json = controladorCandidato.delete(id)
     return jsonify(json)
@@ -58,7 +58,7 @@ def getpartidos():   #devuelve todos los partidos
     return "<h3>mensaje en pantalla</h3>"   #   si se qiuere devolver un mnensaje
 
 
-@app.route("/newPartido", methods=['POST'])
+@app.route("/partidos", methods=['POST'])
 def crearPartido():
     data = request.get_json()   #data tiene la info del body. La informacion viene como formato JSON
     json = controladorPartido.create(data)
@@ -71,14 +71,14 @@ def getPartido(id):
     return jsonify(json)
 
 
-@app.route("/updPartido/<string:id>", methods=['PUT'])
+@app.route("/partidos/<string:id>", methods=['PUT'])
 def modificarPartido(id):
     data = request.get_json()
     json = controladorPartido.update(id, data)
     return jsonify(json)
 
 
-@app.route("/delPartido/<string:id>", methods=['DELETE'])
+@app.route("/partidos/<string:id>", methods=['DELETE'])
 def eliminarPartido(id):
     json = controladorPartido.delete(id)
     return jsonify(json)
@@ -92,7 +92,7 @@ def getmesas():   #devuelve todos los mesas
     return "<h3>mensaje en pantalla</h3>"      #si se quiere devolver un mnensaje
 
 
-@app.route("/newMesa", methods=['POST'])
+@app.route("/mesas", methods=['POST'])
 def crearMesa():
     data = request.get_json()   #data tiene la info del body. La informacion viene como formato JSON
     json = controladorMesa.create(data)
@@ -106,14 +106,14 @@ def getMesa(id):
     return jsonify(json)
 
 
-@app.route("/updMesa/<string:id>", methods=['PUT'])
+@app.route("/mesas/<string:id>", methods=['PUT'])
 def modificarMesa(id):
     data = request.get_json()
     json = controladorMesa.update(id, data)
     return jsonify(json)
 
 
-@app.route("/delMesa/<string:id>", methods=['DELETE'])
+@app.route("/mesas/<string:id>", methods=['DELETE'])
 def eliminarMesa(id):
     json = controladorMesa.delete(id)
     return jsonify(json)
@@ -126,7 +126,7 @@ def getresultados():   #devuelve todos los resultados
     return "<h3>mensaje en pantalla</h3>"      #si se qiuere devolver un mnensaje
 
 
-@app.route("/newResultado", methods=['POST'])
+@app.route("/resultados", methods=['POST'])
 def crearResultado():
     data = request.get_json()   #data tiene la info del body. La informacion viene como formato JSON
     json = controladorResultado.create(data)
@@ -140,13 +140,13 @@ def getResultado(id):
     return jsonify(json)
 
 
-@app.route("/updResultado/<string:id>", methods=['PUT'])
+@app.route("/resultados/<string:id>", methods=['PUT'])
 def modificarResultado(id):
     data = request.get_json()
     json = controladorResultado.update(id, data)
     return jsonify(json)
 
-@app.route("/delResultado/<string:id>", methods=['DELETE'])
+@app.route("/resultados/<string:id>", methods=['DELETE'])
 def eliminarResultado(id):
     json = controladorResultado.delete(id)
     return jsonify(json)

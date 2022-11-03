@@ -1,42 +1,20 @@
+from Repositorios.RepositorioResultado import RepositorioResultado
 from Modelos.Resultado import Resultado
-
 class ControladorResultado():
     def __init__(self):
-        print("Creando ControladorResultado")  #Constructor
-
+        self.repositorioResultado = RepositorioResultado()
     def index(self):
-        print("Listar todos los Resultados")
-        resultado = {
-            "id": 1,
-            "idMesa": 2,
-            "idPartido": 1
-        }
-        return [resultado]
-
-    def create(self,dictResultado):
-        print ("Crea un Resultado")
-        resultado = Resultado(dictResultado)
-        return resultado.__dict__
-
-    def show(self,idPartido):
-        print("Mostrar un Resultado por Partido" )
-        resultado = {
-            "id": 1,
-            "idMesa": 2,
-            "idPartido": idPartido
-        }
-        return resultado   #diccionario
-
-    def update(self, id, dictResultado):
-        print("Update de Resultado por idpartido")
-        resultado = Resultado(dictResultado)
-        return resultado.__dict__
-
-    def delete(self, id):
-        print("Borrar un resultado :")
-        return {"deleted_count ": 1}
-
-
-
-
-
+        return self.repositorioResultado.findAll()
+    def create(self,infoResultado):
+        nuevoResultado=Resultado(infoResultado)
+        return self.repositorioResultado.save(nuevoResultado)
+    def show(self,id):
+        elResultado=Resultado(self.repositorioResultado.findById(id))
+        return elResultado.__dict__
+    def update(self,id,infoResultado):
+        resultadoActual=Resultado(self.repositorioResultado.findById(id))
+        resultadoActual.numero_mesa=infoResultado["numero_mesa"]
+        resultadoActual.id_partido = infoResultado["id_partido"]
+        return self.repositorioResultado.save(resultadoActual)
+    def delete(self,id):
+        return self.repositorioResultado.delete(id)
