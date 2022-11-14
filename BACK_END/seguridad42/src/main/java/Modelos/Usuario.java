@@ -1,4 +1,4 @@
-package tutorial.mision.TIC.seguridad42.Modelos;
+package Modelos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,10 +29,6 @@ public class Usuario {
         this.contrasena = contrasena;
         this.rol = rol;
     }
-
-    /** */
-
-
 
     public String get_id() {
         return _id;

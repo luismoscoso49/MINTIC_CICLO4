@@ -1,4 +1,4 @@
-package tutorial.mision.TIC.seguridad42.Modelos;
+package Modelos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,6 +17,11 @@ public class Permiso {
     private String _id;
     private String url;
     private String metodo;
+
+    public Permiso(String url, String metodo) {
+        this.url = url;
+        this.metodo = metodo;
+    }
 
     public String get_id() {
         return _id;

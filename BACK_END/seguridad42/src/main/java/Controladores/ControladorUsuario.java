@@ -1,10 +1,10 @@
-package tutorial.mision.TIC.seguridad42.Controladores;
+package Controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import tutorial.mision.TIC.seguridad42.Modelos.Usuario;
-import tutorial.mision.TIC.seguridad42.Repositorios.RepositorioUsuario;
+import Modelos.Usuario;
+import Repositorios.RepositorioUsuario;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -21,6 +21,7 @@ public class ControladorUsuario {
     public List<Usuario> index(){
         return this.miRepositorioUsuario.findAll();
     }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public Usuario create(@RequestBody Usuario infoUsuario){
@@ -32,6 +33,7 @@ public class ControladorUsuario {
         Usuario usuarioActual = this.miRepositorioUsuario.findById(id).orElse(null);
         return usuarioActual;
     }
+
     @PutMapping("{id}")
     public Usuario update(@PathVariable String id,@RequestBody Usuario
             infoUsuario){
@@ -41,8 +43,7 @@ public class ControladorUsuario {
         if (usuarioActual!=null){
             usuarioActual.setSeudonimo(infoUsuario.getSeudonimo());
             usuarioActual.setCorreo(infoUsuario.getCorreo());
-            usuarioActual.setContrasena(convertirSHA256(infoUsuario.getContrasena()))
-            ;
+            usuarioActual.setContrasena(convertirSHA256(infoUsuario.getContrasena()));
             return this.miRepositorioUsuario.save(usuarioActual);
         }else{
             return null;
@@ -58,6 +59,7 @@ public class ControladorUsuario {
             this.miRepositorioUsuario.delete(usuarioActual);
         }
     }
+
     public String convertirSHA256(String password) {
         MessageDigest md = null;
         try {
